@@ -174,9 +174,24 @@ def make_engine(url):
     return create_engine(url, **options)
 
 
-engine = make_engine(
-    os.getenv("DATABASE_URL", "sqlite:///./eventsphere.db")
+#engine = make_engine(
+#    os.getenv("DATABASE_URL", "sqlite:///./eventsphere.db")
+#)
+
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "sqlite:///./eventsphere.db",
 )
+
+if os.getenv("RENDER", "").lower() == "true":
+    if not DATABASE_URL.startswith(
+        ("postgres://", "postgresql://", "postgresql+psycopg://")
+    ):
+        raise RuntimeError(
+            "Render deployment requires a PostgreSQL DATABASE_URL."
+        )
+
+engine = make_engine(DATABASE_URL)
 
 AGENT_NAMES = [
     "VenueAgent",
