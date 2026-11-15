@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf }}">
+  <title>EventSphere</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="/">EventSphere</a>
+      <div id="identity"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">UNIVERSITY EVENTS AND VENUES</p>
+      <h1>Find an event. Reserve your place.</h1>
+      <p>
+        Book tickets, hire a venue, and check in with your digital ticket.
+        All payments in this application are simulated.
+      </p>
+    </section>
+
+    <nav id="navigation" class="tabs" aria-label="Main navigation"></nav>
+
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+
+    <section id="events-view">
+      <div class="toolbar">
+        <input
+          id="search"
+          type="search"
+          placeholder="Search events"
+          aria-label="Search events"
+        >
+        <select id="category" aria-label="Filter by category">
+          <option value="">All categories</option>
+        </select>
+      </div>
+      <div id="events" class="grid"></div>
+    </section>
+
+    <section id="account-view" hidden></section>
+    <section id="hire-view" hidden></section>
+    <section id="admin-view" hidden></section>
+    <section id="scanner-view" hidden></section>
+    <section id="auth-view" hidden></section>
+  </main>
+
+  <footer class="container footer">
+    EventSphere · Agent-based venue booking · Simulated payments only
+  </footer>
+
+  <script
+    src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"
+    defer
+  ></script>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
